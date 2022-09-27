@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'Ubuntu400';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/ubuntu-v20-latin-regular.woff2') format('woff2'),
+        url('fonts/ubuntu-v20-latin-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu700';
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/ubuntu-v20-latin-700.woff2') format('woff2'),
+        url('fonts/ubuntu-v20-latin-700.woff') format('woff');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 5rem auto 5rem;
+    max-width: auto;
+    margin: auto;
+    background-image: url(images/b4.jpg);
+}
+
+header {
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(44, 91, 156);
+}
+
+main {
+    position: relative;
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-rows: 6.25rem 400px 6.25rem 6.25rem;
+    max-width: auto;
+    margin: auto;
+}
+
+footer {
+    grid-row: 3 / 4;
+    background-color: rgb(44, 91, 156);
+    color: whitesmoke;
+}
+
+footer p,a {
+    text-decoration: none;
+    color: whitesmoke;
+    margin: 1rem .75rem;
+    font: 1rem 'Ubuntu700', sans-serif;
+}
+
+h1 {
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    /* width: 300px; */
+    height: 75px;
+    color: whitesmoke;
+    font: 3.5rem 'Ubuntu700', sans-serif;
+}
+
+canvas {
+    background-color: whitesmoke;
+}
