@@ -8,10 +8,9 @@ canvas.height = 576
 
 const play = () => {
   let audio = document.querySelector("#audiofile");
-  audio.volume = 0.2;
+  audio.volume = 0.1;
   audio.play();
 }
-
 
 const gravity = 0.7
 
@@ -291,6 +290,8 @@ const animate = () => {
     player.takeHit()
     enemy.isAttacking = false
 
+ 
+
     gsap.to('#playerHealth', {
       width: player.health + '%'
     })
@@ -303,7 +304,9 @@ const animate = () => {
 
   // end game based on health
   if (enemy.health <= 0 || player.health <= 0) {
-    getResult({ player, enemy, timerId })
+    playWinner();
+    getResult({ player, enemy, timerId });
+
   }
 }
 

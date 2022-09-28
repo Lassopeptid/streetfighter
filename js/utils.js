@@ -10,17 +10,17 @@ const detectCollision = ({ rectangle1, rectangle2 }) => {
   )
 }
 
-const playWinner = () => {
 
+
+
+const playWinner = () => {
 
   let audio = document.querySelector("#audiofile");
   audio.pause()
 
   let audiowin = document.querySelector("#audiowin");
-  audiowin.loop = false;
-  audiowin.volume = 0.2;
+  audiowin.volume = 0.1;
   audiowin.play();
-  audiowin.loop = false;
 }
 
 // const audioStop = () => {
@@ -31,10 +31,10 @@ const playWinner = () => {
 // }
 
 const getResult = ({ player, enemy, timerId }) => {
-
+  // playWinner();
   clearTimeout(timerId);
   // audioStop();
-  playWinner();
+
 
   document.querySelector('#displayText').style.display = 'flex'
   if (player.health === enemy.health) {
@@ -60,4 +60,5 @@ const countDown = () => {
   if (timer === 0) {
     getResult({ player, enemy, timerId })
   }
+
 }
