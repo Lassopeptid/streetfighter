@@ -1,66 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street-Fighter</title>
-    <link rel="stylesheet" href="style.css">
-
-
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Street-Fighter</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div id="container">
-        <header>
-            <h1>Street-Fighter</h1>
-        </header>
-        <main>
-            <div style="position:absolute; display: flex; width: 100%; align-items: center; padding: 20px;">
+  <div id="container">
+    <header>
+        <h1>Street-Fighter</h1>
+    </header>
+    <main>
+        <div style="position:absolute; display: flex; width: 100%; align-items: center; padding: 20px;">
 
-                <!-- Player A HP -->
-                <div style="position:relative; height: 30px; width: 100%; display: flex; justify-content: flex-end;">
-                    <div style="background-color: grey; height: 30px; width: 100%"></div>
-                    <div id="playerHealth"
-                        style="position:absolute; background-color: red; top: 0; right: 0; bottom: 0; width: 100%;">
-                    </div>
+            <!-- Player A HP -->
+            <div style="position:relative; height: 30px; width: 100%; display: flex; justify-content: flex-end;">
+                <div style="background-color: grey; height: 30px; width: 100%"></div>
+                <div id="playerHealth"
+                    style="position:absolute; background-color: red; top: 0; right: 0; bottom: 0; width: 100%;">
                 </div>
-
-                <!-- Timer -->
-                <div id="countdown"
-                    style="background-color: yellow; height: 30px; width: 150px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                    10
-                </div>
-
-                <!-- Player B HP -->
-                <div style="position:relative; height: 30px; width: 100%">
-                    <div style="background-color: grey; height: 30px; width: 100%"></div>
-                    <div id="enemyHealth"
-                        style="position:absolute; background-color: blue; top: 0; right: 0; bottom: 0; left: 0;"></div>
-                </div>
-
             </div>
-            <div id="gameResult"
-                style="position: absolute; color: black; align-items: center; justify-content: center; top: 0; right: 0; bottom: 0; left: 0; display: none;">
+
+            <!-- Timer -->
+            <div id="timer"
+                style="background-color: yellow; height: 30px; width: 150px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                10
             </div>
-            <canvas></canvas>
-        </main>
-        <footer>
-            <p>&copy; 2022 By Mohamed Bouygheoussan <a href="https://github.com/Lassopeptid/streetfighter"
-                    target="_blank">Github repository</a></p>
-        </footer>
-    </div>
+
+            <!-- Player B HP -->
+            <div style="position:relative; height: 30px; width: 100%">
+                <div style="background-color: grey; height: 30px; width: 100%"></div>
+                <div id="enemyHealth"
+                    style="position:absolute; background-color: blue; top: 0; right: 0; bottom: 0; left: 0;"></div>
+            </div>
+
+        </div>
+        <div id="displayText"
+            style="position: absolute; color: black; align-items: center; justify-content: center; top: 0; right: 0; bottom: 0; left: 0; display: none;">
+        </div>
+        <canvas></canvas>
+    </main>
+    <footer>
+        <p>&copy; 2022 By Mohamed Bouygheoussan <a href="https://github.com/Lassopeptid/streetfighter"
+                target="_blank">Github repository</a></p>
+    </footer>
+</div>
 
 
 
-    <!-- <script src="sprite.js" defer></script> -->
-    <!-- <script src="conds.js"></script> -->
-    <!-- <script src="classes.js"></script> -->
-    <script src="index.js"></script>
-
-
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="js/utils.js"></script>
+  <script src="js/classes.js"></script>
+  <script src="index.js"></script>
 </body>
-
-</html>
