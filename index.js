@@ -6,6 +6,13 @@ canvas.height = 576
 
 // c.fillRect(0, 0, canvas.width, canvas.height)
 
+const play = () => {
+  let audio = document.querySelector("#audiofile");
+  audio.volume = 0.2;
+  audio.play();
+}
+
+
 const gravity = 0.7
 
 const background = new Sprite({
@@ -16,15 +23,55 @@ const background = new Sprite({
   imageSrc: './img/background.png'
 })
 
-// const shop = new Sprite({
+const citizen = new Sprite({
+  position: {
+    x: 235,
+    y: 240
+  },
+  imageSrc: './img/window.png',
+  scale: 1.8,
+  framesMax: 5,
+  framesHold: 30
+})
+
+
+// const woman = new Fighter({
 //   position: {
-//     x: 600,
-//     y: 128
+//     x: 0,
+//     y: 0
 //   },
-//   imageSrc: './img/shop.png',
-//   scale: 2.75,
-//   framesMax: 6
+//   velocity: {
+//     x: 0,
+//     y: 0
+//   },
+//   offset: {
+//     x: 0,
+//     y: 0
+//   },
+//   imageSrc: './img/woman-idle.png',
+//   framesMax: 7,
+//   scale: 3,
+//   offset: {
+//     x: 0,
+//     y: 64
+//   },
+//   sprites: {
+//     idle: {
+//       imageSrc: './img/woman-idle.png',
+//       framesMax: 7
+//     },
+//     run: {
+//       imageSrc: './img/woman-walk.png',
+//       framesMax: 6
+//     }
+//   }
 // })
+
+
+
+
+
+
 
 const player = new Fighter({
   position: {
@@ -163,7 +210,8 @@ const animate = () => {
   // c.fillStyle = 'black'
   c.fillRect(0, 0, canvas.width, canvas.height)
   background.update()
-  // shop.update()
+  citizen.update()
+  // woman.update()
   // c.fillStyle = 'rgba(255, 255, 255, 0.15)'
   // c.fillRect(0, 0, canvas.width, canvas.height)
   player.update()
@@ -322,3 +370,10 @@ window.addEventListener('keyup', (event) => {
       break;
   }
 })
+
+play();
+
+// Genutzt wurde die gsap- library (auffindbar unter : https://cdnjs.com/libraries/gsap) für eine bessere Animation des Gesundheitsbalken.
+
+// Die hier verwendeten Sprites stammen im Falle der Spieler-Sprites von: https://aamatniekss.itch.io/fantasy-knight-free-pixelart-animated-character
+// Die restlichen Sprites sowie das Hintergrundbild von: https://ansimuz.itch.io/gothicvania-town

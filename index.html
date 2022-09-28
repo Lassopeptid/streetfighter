@@ -1,54 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Street-Fighter</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="warlord-helmet.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street-Fighter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="warlord-helmet.png" type="image/x-icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"
+        integrity="sha512-gsEItzcNkWxfxHjr4BaEZAd9YuRWYjxnj7c/yukcZ0/nWehUb5TjJNyyv1ApCU2DFH/qgw+stFZHPOKnoQnIuQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="js/jquery-3.6.0.js"defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/classes.js"defer></script>
+    <script src="index.js" defer></script>
+
 </head>
+
 <body>
-  <div id="container">
-    <header>
-        <h1>Street-Fighter</h1>
-    </header>
-    <main>
-        <div id="posHP">
+    <div id="container">
+        <header>
+            <h1>Street-Fighter</h1>
+        </header>
+        <main>
+            <div id="posHP">
 
-            <!-- Player A HP -->
-            <div id="playerone">
-                <div id="player1"></div>
-                <div id="playerHealth"></div>
+                <!-- Player A HP -->
+                <div id="playerone">
+                    <div id="player1"></div>
+                    <div id="playerHealth"></div>
+                </div>
+
+                <!-- Timer -->
+                <div id="timer"> </div>
+
+                <!-- Player B HP -->
+                <div id="playertwo">
+                    <div id="player2"></div>
+                    <div id="enemyHealth"></div>
+                </div>
+
             </div>
-
-            <!-- Timer -->
-            <div id="timer"> </div>
-
-            <!-- Player B HP -->
-            <div id="playertwo">
-                <div id="player2" ></div>
-                <div id="enemyHealth"></div>
-            </div>
-
-        </div>
-        <div id="displayText"></div>
-        <canvas></canvas>
-    </main>
-    <footer>
-        <p>&copy; 2022 By Mohamed Bouygheoussan <a href="https://github.com/Lassopeptid/streetfighter"
-                target="_blank">Github repository</a></p>
-    </footer>
-</div>
+            <div id="displayText"></div>
 
 
+            <canvas> </canvas>
 
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
-    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-  <script src="js/utils.js"></script>
-  <script src="js/classes.js"></script>
-  <script src="index.js"></script>
+            <audio id="audiofile" preload="auto" muted>
+                <source src="Breath_of_Fire.ogg" />
+            </audio>
+
+            <audio id="audiowin" preload="auto">
+                <source src="win.ogg" />
+            </audio>
+            <!-- <button id="btnaudio" onclick="play()"></button> -->
+        </main>
+
+        <footer>
+            <p>&copy; 2022 By Mohamed Bouygheoussan <a href="https://github.com/Lassopeptid/streetfighter"
+                    target="_blank">Github repository</a></p>
+        </footer>
+    </div>
+
+
+
 </body>

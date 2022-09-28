@@ -4,6 +4,7 @@ class Sprite {
     imageSrc,
     scale = 1,
     framesMax = 1,
+    framesHold = 5,
     offset = { x: 0, y: 0 }
   }) {
     this.position = position
@@ -15,7 +16,7 @@ class Sprite {
     this.framesMax = framesMax
     this.framesCurrent = 0
     this.framesElapsed = 0
-    this.framesHold = 5
+    this.framesHold = framesHold
     this.offset = offset
   }
 
