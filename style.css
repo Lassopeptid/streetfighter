@@ -14,10 +14,22 @@
         url('fonts/ubuntu-v20-latin-700.woff') format('woff');
 }
 
+
+/* press-start-2p-regular - latin */
+@font-face {
+    font-family: 'Press Start 2P';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('fonts/press-start-2p-v14-latin-regular.woff2') format('woff2'),
+        url('fonts/press-start-2p-v14-latin-regular.woff') format('woff');
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu400';
 }
 
 #container {
@@ -51,7 +63,8 @@ footer {
     color: whitesmoke;
 }
 
-footer p,a {
+footer p,
+a {
     text-decoration: none;
     color: whitesmoke;
     margin: 1rem .75rem;
@@ -70,4 +83,83 @@ h1 {
 
 canvas {
     background-color: whitesmoke;
+}
+
+#posHP {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 20px;
+}
+
+#playerone {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#player1 {
+    background-color: #ef4444;
+    height: 30px;
+    width: 100%;
+}
+
+#playerHealth {
+    position: absolute;
+    background-color: #0f766e;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#timer {
+    background-color: rgb(31, 17, 17);
+    color: whitesmoke;
+    height: 30px;
+    width: 150px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P';
+}
+
+#playertwo {
+    position: relative;
+    height: 30px;
+    width: 100%;
+}
+
+#player2 {
+    background-color: #ef4444;
+    height: 30px;
+    width: 100%;
+}
+
+#enemyHealth {
+    position: absolute;
+    background-color: #0369a1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#displayText {
+    position: absolute;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    color: whitesmoke;
+    font-family: 'Press Start 2P';
+    font-size: 4rem;
 }

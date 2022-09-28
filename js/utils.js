@@ -1,4 +1,4 @@
-function rectangularCollision({ rectangle1, rectangle2 }) {
+const detectCollision = ({ rectangle1, rectangle2 }) => {
   return (
     rectangle1.attackBox.position.x + rectangle1.attackBox.width >=
       rectangle2.position.x &&
@@ -10,7 +10,7 @@ function rectangularCollision({ rectangle1, rectangle2 }) {
   )
 }
 
-function determineWinner({ player, enemy, timerId }) {
+const getResult = ({ player, enemy, timerId }) => {
   clearTimeout(timerId)
   document.querySelector('#displayText').style.display = 'flex'
   if (player.health === enemy.health) {
@@ -22,16 +22,16 @@ function determineWinner({ player, enemy, timerId }) {
   }
 }
 
-let timer = 60
-let timerId
-function decreaseTimer() {
+let timer = 60;
+let timerId;
+const countDown = () => {
   if (timer > 0) {
-    timerId = setTimeout(decreaseTimer, 1000)
+    timerId = setTimeout(countDown, 1000)
     timer--
     document.querySelector('#timer').innerHTML = timer
   }
 
   if (timer === 0) {
-    determineWinner({ player, enemy, timerId })
+    getResult({ player, enemy, timerId })
   }
 }

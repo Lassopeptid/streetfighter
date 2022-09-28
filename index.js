@@ -4,7 +4,7 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
-c.fillRect(0, 0, canvas.width, canvas.height)
+// c.fillRect(0, 0, canvas.width, canvas.height)
 
 const gravity = 0.7
 
@@ -69,7 +69,7 @@ const player = new Fighter({
     },
     takeHit: {
       imageSrc: './img/knight/hit.png',
-      framesMax: 1
+      framesMax: 3
     },
     death: {
       imageSrc: './img/knight/death.png',
@@ -78,7 +78,7 @@ const player = new Fighter({
   },
   attackBox: {
     offset: {
-      x: 100,
+      x: 10,
       y: 50
     },
     width: 160,
@@ -130,7 +130,7 @@ const enemy = new Fighter({
     },
     takeHit: {
       imageSrc: './img/knight2/hit.png',
-      framesMax: 1
+      framesMax: 3
     },
     death: {
       imageSrc: './img/knight2/death.png',
@@ -139,7 +139,7 @@ const enemy = new Fighter({
   },
   attackBox: {
     offset: {
-      x: -170,
+      x: -110,
       y: 50
     },
     width: 170,
@@ -150,30 +150,22 @@ const enemy = new Fighter({
 console.log(player)
 
 const keys = {
-  a: {
-    pressed: false
-  },
-  d: {
-    pressed: false
-  },
-  ArrowRight: {
-    pressed: false
-  },
-  ArrowLeft: {
-    pressed: false
-  }
+  a: { pressed: false },
+  d: { pressed: false },
+  ArrowRight: { pressed: false },
+  ArrowLeft: { pressed: false }
 }
 
-decreaseTimer()
+countDown();
 
-function animate() {
+const animate = () => {
   window.requestAnimationFrame(animate)
-  c.fillStyle = 'black'
+  // c.fillStyle = 'black'
   c.fillRect(0, 0, canvas.width, canvas.height)
   background.update()
   // shop.update()
-  c.fillStyle = 'rgba(255, 255, 255, 0.15)'
-  c.fillRect(0, 0, canvas.width, canvas.height)
+  // c.fillStyle = 'rgba(255, 255, 255, 0.15)'
+  // c.fillRect(0, 0, canvas.width, canvas.height)
   player.update()
   enemy.update()
 
@@ -219,7 +211,7 @@ function animate() {
 
   // detect for collision & enemy gets hit
   if (
-    rectangularCollision({
+    detectCollision({
       rectangle1: player,
       rectangle2: enemy
     }) &&
@@ -241,7 +233,7 @@ function animate() {
 
   // this is where our player gets hit
   if (
-    rectangularCollision({
+    detectCollision({
       rectangle1: enemy,
       rectangle2: player
     }) &&
@@ -263,11 +255,11 @@ function animate() {
 
   // end game based on health
   if (enemy.health <= 0 || player.health <= 0) {
-    determineWinner({ player, enemy, timerId })
+    getResult({ player, enemy, timerId })
   }
 }
 
-animate()
+animate();
 
 window.addEventListener('keydown', (event) => {
   if (!player.dead) {
@@ -275,17 +267,17 @@ window.addEventListener('keydown', (event) => {
       case 'd':
         keys.d.pressed = true
         player.lastKey = 'd'
-        break
+        break;
       case 'a':
         keys.a.pressed = true
         player.lastKey = 'a'
-        break
+        break;
       case 'w':
         player.velocity.y = -20
-        break
+        break;
       case ' ':
         player.attack()
-        break
+        break;
     }
   }
 
@@ -294,18 +286,18 @@ window.addEventListener('keydown', (event) => {
       case 'ArrowRight':
         keys.ArrowRight.pressed = true
         enemy.lastKey = 'ArrowRight'
-        break
+        break;
       case 'ArrowLeft':
         keys.ArrowLeft.pressed = true
         enemy.lastKey = 'ArrowLeft'
-        break
+        break;
       case 'ArrowUp':
         enemy.velocity.y = -20
-        break
+        break;
       case 'ArrowDown':
         enemy.attack()
 
-        break
+        break;
     }
   }
 })
@@ -314,19 +306,19 @@ window.addEventListener('keyup', (event) => {
   switch (event.key) {
     case 'd':
       keys.d.pressed = false
-      break
+      break;
     case 'a':
       keys.a.pressed = false
-      break
+      break;
   }
 
   // enemy keys
   switch (event.key) {
     case 'ArrowRight':
       keys.ArrowRight.pressed = false
-      break
+      break;
     case 'ArrowLeft':
       keys.ArrowLeft.pressed = false
-      break
+      break;
   }
 })
