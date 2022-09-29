@@ -366,9 +366,28 @@ window.addEventListener('keyup', (event) => {
   }
 })
 
-countDown();
-animate();
-play();
+
+const init = () => {
+
+  countDown();
+  animate();
+  play();
+
+  let startbtn = document.querySelector('#startbtn');
+  startbtn.style.display = 'none';
+  let startDisplayP = document.querySelector('#playerHealth');
+  startDisplayP.style.display = 'block';
+  let startDisplayE = document.querySelector('#enemyHealth');
+  startDisplayE.style.display = 'block';
+
+}
+
+
+let startbtn = document.querySelector('#startbtn');
+startbtn.addEventListener('click', init);
+
+
+
 
 
 

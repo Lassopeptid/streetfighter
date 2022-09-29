@@ -25,12 +25,13 @@
             <h1>Street-Fighter</h1>
         </header>
         <main>
+            <button id="startbtn" >Start</button>
             <div id="posHP">
 
                 <!-- Player A HP -->
                 <div id="playerone">
                     <div id="player1"></div>
-                    <div id="playerHealth"></div>
+                    <div id="playerHealth" class="notShowing"></div>
                 </div>
 
                 <!-- Timer -->
@@ -39,7 +40,7 @@
                 <!-- Player B HP -->
                 <div id="playertwo">
                     <div id="player2"></div>
-                    <div id="enemyHealth"></div>
+                    <div id="enemyHealth" class="notShowing"></div>
                 </div>
 
             </div>
@@ -48,7 +49,7 @@
 
             <canvas> </canvas>
 
-            <audio id="audiofile" preload="auto" >
+            <audio id="audiofile" preload="auto">
                 <source src="/music/Breath_of_Fire.ogg" />
             </audio>
 
