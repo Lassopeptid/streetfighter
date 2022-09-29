@@ -10,9 +10,6 @@ const detectCollision = ({ rectangle1, rectangle2 }) => {
   )
 }
 
-
-
-
 const playWinner = () => {
 
   let audio = document.querySelector("#audiofile");
@@ -21,34 +18,44 @@ const playWinner = () => {
   let audiowin = document.querySelector("#audiowin");
   audiowin.volume = 0.1;
   audiowin.play();
+
+  console.log('utils-winner ok');
 }
 
-// const audioStop = () => {
+const playTie = () => {
 
-//   let audiowin = document.querySelector("#audiowin");
-//   audiowin.pause();
+  let audio = document.querySelector("#audiofile");
+  audio.pause()
 
-// }
+  let audiowin = new Audio('/music/lose.ogg')
+  audiowin.volume = 0.1;
+  audiowin.play();
+
+
+  console.log('utils-tie ok');
+}
+
+const cancelAni = () => {
+  setTimeout(() => { window.cancelAnimationFrame(reqAnim); }, 300);
+}
 
 const getResult = ({ player, enemy, timerId }) => {
-  // playWinner();
   clearTimeout(timerId);
-  // audioStop();
-
-
-  document.querySelector('#displayText').style.display = 'flex'
+  cancelAni();
+  document.querySelector('#displayText').style.display = 'flex';
   if (player.health === enemy.health) {
-    document.querySelector('#displayText').innerHTML = 'Tie'
+    document.querySelector('#displayText').innerHTML = 'Tie';
+    playTie();
   } else if (player.health > enemy.health) {
-    document.querySelector('#displayText').innerHTML = 'Player 1 Wins'
+    document.querySelector('#displayText').innerHTML = 'Player 1 Wins';
+    playWinner();
   } else if (player.health < enemy.health) {
-    document.querySelector('#displayText').innerHTML = 'Player 2 Wins'
-
+    document.querySelector('#displayText').innerHTML = 'Player 2 Wins';
+    playWinner();
   }
-
 }
 
-let timer = 60;
+let timer = 10;
 let timerId;
 const countDown = () => {
   if (timer > 0) {
@@ -60,5 +67,4 @@ const countDown = () => {
   if (timer === 0) {
     getResult({ player, enemy, timerId })
   }
-
 }

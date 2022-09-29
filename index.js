@@ -4,13 +4,13 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
-// c.fillRect(0, 0, canvas.width, canvas.height)
 
 const play = () => {
   let audio = document.querySelector("#audiofile");
   audio.volume = 0.1;
   audio.play();
 }
+
 
 const gravity = 0.7
 
@@ -65,11 +65,6 @@ const citizen = new Sprite({
 //     }
 //   }
 // })
-
-
-
-
-
 
 
 const player = new Fighter({
@@ -202,10 +197,9 @@ const keys = {
   ArrowLeft: { pressed: false }
 }
 
-countDown();
-
 const animate = () => {
-  window.requestAnimationFrame(animate)
+
+  reqAnim = window.requestAnimationFrame(animate)
   // c.fillStyle = 'black'
   c.fillRect(0, 0, canvas.width, canvas.height)
   background.update()
@@ -290,8 +284,6 @@ const animate = () => {
     player.takeHit()
     enemy.isAttacking = false
 
- 
-
     gsap.to('#playerHealth', {
       width: player.health + '%'
     })
@@ -304,13 +296,13 @@ const animate = () => {
 
   // end game based on health
   if (enemy.health <= 0 || player.health <= 0) {
-    playWinner();
+    console.log('index ok');
     getResult({ player, enemy, timerId });
-
   }
+
+
 }
 
-animate();
 
 window.addEventListener('keydown', (event) => {
   if (!player.dead) {
@@ -374,9 +366,14 @@ window.addEventListener('keyup', (event) => {
   }
 })
 
+countDown();
+animate();
 play();
+
+
 
 // Genutzt wurde die gsap- library (auffindbar unter : https://cdnjs.com/libraries/gsap) für eine bessere Animation des Gesundheitsbalken.
 
 // Die hier verwendeten Sprites stammen im Falle der Spieler-Sprites von: https://aamatniekss.itch.io/fantasy-knight-free-pixelart-animated-character
 // Die restlichen Sprites sowie das Hintergrundbild von: https://ansimuz.itch.io/gothicvania-town
+// Die Gesundheitsbalken-Sprites  von: https://www.seekpng.com/ipng/u2q8y3i1t4q8t4w7_health-bar-health-bar-sprite-2d/d
