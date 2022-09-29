@@ -366,19 +366,22 @@ window.addEventListener('keyup', (event) => {
   }
 })
 
-
-const init = () => {
-
-  countDown();
-  animate();
-  play();
-
+const startBehavior = () => {
   let startbtn = document.querySelector('#startbtn');
   startbtn.style.display = 'none';
   let startDisplayP = document.querySelector('#playerHealth');
   startDisplayP.style.display = 'block';
   let startDisplayE = document.querySelector('#enemyHealth');
   startDisplayE.style.display = 'block';
+
+}
+
+
+const init = () => {
+  countDown();
+  animate();
+  play();
+  startBehavior();
 
 }
 
