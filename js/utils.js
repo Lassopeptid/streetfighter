@@ -19,7 +19,7 @@ const playWinner = () => {
   audiowin.volume = 0.1;
   audiowin.play();
 
-  console.log('utils-winner ok');
+  // console.log('utils-winner ok');
 }
 
 const playTie = () => {
@@ -27,16 +27,16 @@ const playTie = () => {
   let audio = document.querySelector("#audiofile");
   audio.pause()
 
-  let audiowin = new Audio('/music/lose.ogg')
+  let audiowin = new Audio('music/lose.ogg')
   audiowin.volume = 0.1;
   audiowin.play();
 
 
-  console.log('utils-tie ok');
+  // console.log('utils-tie ok');
 }
 
 const cancelAni = () => {
-  setTimeout(() => { window.cancelAnimationFrame(reqAnim); }, 300);
+  setTimeout(() => { window.cancelAnimationFrame(reqAnim); }, 500);
 }
 
 const getResult = ({ player, enemy, timerId }) => {
@@ -46,12 +46,15 @@ const getResult = ({ player, enemy, timerId }) => {
   if (player.health === enemy.health) {
     document.querySelector('#displayText').innerHTML = 'Tie';
     playTie();
+    tiespeechbubble.update();
   } else if (player.health > enemy.health) {
     document.querySelector('#displayText').innerHTML = 'Player 1 Wins';
     playWinner();
+    speechbubble.update();
   } else if (player.health < enemy.health) {
     document.querySelector('#displayText').innerHTML = 'Player 2 Wins';
     playWinner();
+    enemyspeechbubble.update();
   }
 }
 

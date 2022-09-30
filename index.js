@@ -4,16 +4,17 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
-
+// play battle theme
 const play = () => {
   let audio = document.querySelector("#audiofile");
   audio.volume = 0.1;
   audio.play();
 }
 
-
+// describe how objects will fall after jumping
 const gravity = 0.7
 
+// background Sprite
 const background = new Sprite({
   position: {
     x: 0,
@@ -22,6 +23,7 @@ const background = new Sprite({
   imageSrc: './img/background.png'
 })
 
+// bearded man in the window Sprite
 const citizen = new Sprite({
   position: {
     x: 235,
@@ -34,39 +36,37 @@ const citizen = new Sprite({
 })
 
 
-// const woman = new Fighter({
-//   position: {
-//     x: 0,
-//     y: 0
-//   },
-//   velocity: {
-//     x: 0,
-//     y: 0
-//   },
-//   offset: {
-//     x: 0,
-//     y: 0
-//   },
-//   imageSrc: './img/woman-idle.png',
-//   framesMax: 7,
-//   scale: 3,
-//   offset: {
-//     x: 0,
-//     y: 64
-//   },
-//   sprites: {
-//     idle: {
-//       imageSrc: './img/woman-idle.png',
-//       framesMax: 7
-//     },
-//     run: {
-//       imageSrc: './img/woman-walk.png',
-//       framesMax: 6
-//     }
-//   }
-// })
+// speechbubble Sprite
+const speechbubble = new Sprite({
+  position: {
+    x: 240,
+    y: 215
+  },
+  imageSrc: './img/speech-bubble.png',
+  scale: 0.3
+})
 
+// speechbubble Sprite
+const enemyspeechbubble = new Sprite({
+  position: {
+    x: 220,
+    y: 215
+  },
+  imageSrc: './img/enemy-speech-bubble.png',
+  scale: 0.3
+})
 
+// speechbubble Sprite
+const tiespeechbubble = new Sprite({
+  position: {
+    x: 230,
+    y: 215
+  },
+  imageSrc: './img/tie-speech-bubble.png',
+  scale: 0.3
+})
+
+// Player Sprite
 const player = new Fighter({
   position: {
     x: 0,
@@ -188,7 +188,6 @@ const enemy = new Fighter({
   }
 })
 
-console.log(player)
 
 const keys = {
   a: { pressed: false },
@@ -197,10 +196,10 @@ const keys = {
   ArrowLeft: { pressed: false }
 }
 
+// Animation processing
 const animate = () => {
 
   reqAnim = window.requestAnimationFrame(animate)
-  // c.fillStyle = 'black'
   c.fillRect(0, 0, canvas.width, canvas.height)
   background.update()
   citizen.update()
@@ -209,7 +208,6 @@ const animate = () => {
   // c.fillRect(0, 0, canvas.width, canvas.height)
   player.update()
   enemy.update()
-
   player.velocity.x = 0
   enemy.velocity.x = 0
 
@@ -272,7 +270,7 @@ const animate = () => {
     player.isAttacking = false
   }
 
-  // this is where our player gets hit
+  // this is where the player gets hit
   if (
     detectCollision({
       rectangle1: enemy,
@@ -296,11 +294,15 @@ const animate = () => {
 
   // end game based on health
   if (enemy.health <= 0 || player.health <= 0) {
-    console.log('index ok');
+    // console.log('index ok');
     getResult({ player, enemy, timerId });
+
   }
 
+  if (timer === 0) {
+    tiespeechbubble.update();
 
+  }
 }
 
 
@@ -346,6 +348,7 @@ window.addEventListener('keydown', (event) => {
 })
 
 window.addEventListener('keyup', (event) => {
+  // player keys
   switch (event.key) {
     case 'd':
       keys.d.pressed = false
@@ -394,7 +397,7 @@ startbtn.addEventListener('click', init);
 
 
 
-// Genutzt wurde die gsap- library (auffindbar unter : https://cdnjs.com/libraries/gsap) für eine bessere Animation des Gesundheitsbalken.
+// Genutzt wurde die gsap- library (auffindbar unter : https://cdnjs.com/libraries/gsap) für eine bessere Animation des Gesundheitsbalkens.
 
 // Die hier verwendeten Sprites stammen im Falle der Spieler-Sprites von: https://aamatniekss.itch.io/fantasy-knight-free-pixelart-animated-character
 // Die restlichen Sprites sowie das Hintergrundbild von: https://ansimuz.itch.io/gothicvania-town
